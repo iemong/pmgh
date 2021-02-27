@@ -1,8 +1,8 @@
 {
-  "functions": {
-    "api/**": {
-      "memory": 1024
-    }
-  },
-  "rewrites": [{ "source": "/:id", "destination": "/api/user" }]
+    "functions": {
+        "api/**": {
+            "memory": 1024
+        }
+    },
+    "rewrites": [{ "source": "/:user", "destination": "/api/index" }]
 }

@@ -5,10 +5,9 @@ process.env.TZ = 'Asia/Tokyo'
 
 export default async (req: NowRequest, res: NowResponse): Promise<void> => {
     const { user } = req.query
-    const userParams = new URLSearchParams(String(user).replace(/^.*?(\?|$)/, '$1'))
-    const userName = userParams.get('id')
     try {
-        const file = await captureKusa(userName || '')
+        if (user === 'favicon.ico') throw new Error('request from favicon')
+        const file = await captureKusa(String(user) || '')
 
         const tomorrow = new Date()
         tomorrow.setDate(tomorrow.getDate() + 1)
