@@ -3,11 +3,12 @@ import { captureKusa } from './libs/captureKusa'
 
 process.env.TZ = 'Asia/Tokyo'
 
-export default async (req: NowRequest, res: NowResponse) => {
+export default async (req: NowRequest, res: NowResponse): Promise<void> => {
     const { user } = req.query
-
+    const userParams = new URLSearchParams(String(user).replace(/^.*?(\?|$)/, '$1'))
+    const userName = userParams.get('id')
     try {
-        const file = await captureKusa(user as string)
+        const file = await captureKusa(userName || '')
 
         const tomorrow = new Date()
         tomorrow.setDate(tomorrow.getDate() + 1)
