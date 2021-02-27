@@ -1,7 +1,8 @@
 {
     "functions": {
         "api/**": {
-            "memory": 1024
+            "memory": 1024,
+            "maxDuration": 30
         }
     },
     "rewrites": [{ "source": "/:user", "destination": "/api/index" }]
