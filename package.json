@@ -2,15 +2,17 @@
     "name": "puppeteer-starter",
     "version": "0.0.1",
     "description": "puppeter template project in typescript ",
-    "main": "index.ts",
+    "main": "api/index.ts",
     "repository": "https://github.com/iemong/puppeteer-starter",
     "author": "iemong",
     "license": "MIT",
     "scripts": {
-        "start": "ts-node index.ts",
+        "start": "vercel dev",
         "lint": "eslint --ext .js,ts ./**"
     },
     "devDependencies": {
+        "@types/puppeteer-core": "^5.4.0",
+        "@vercel/node": "^1.9.0",
         "@types/node": "^14.14.31",
         "@typescript-eslint/eslint-plugin": "^4.15.2",
         "@typescript-eslint/parser": "^4.15.2",
@@ -19,7 +21,11 @@
         "eslint-plugin-prettier": "^3.3.1",
         "prettier": "^2.2.1",
         "puppeteer": "^8.0.0",
-        "ts-node": "^9.1.1",
         "typescript": "^4.2.2"
+    },
+    "dependencies": {
+        "@now/build-utils": "^2.7.0",
+        "chrome-aws-lambda": "7.0.0",
+        "puppeteer-core": "7.0.0"
     }
 }
