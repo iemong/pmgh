@@ -16,7 +16,6 @@ export default async (req: NowRequest, res: NowResponse): Promise<void> => {
         tomorrow.setMinutes(0)
         tomorrow.setSeconds(0)
         tomorrow.setMilliseconds(0)
-        console.log(`[LOG] tomorrow is ${tomorrow.toString()}`)
 
         res.statusCode = 200
         res.setHeader('Content-Type', 'image/jpeg')
