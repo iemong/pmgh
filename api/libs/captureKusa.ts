@@ -1,11 +1,28 @@
-import { Page } from 'puppeteer'
+import puppeteer from 'puppeteer-core'
+import chrome from 'chrome-aws-lambda'
 
-const URL = 'https://github.com/iemong'
+const isDev = !process.env.AWS_REGION
+
+const BASE_URL = 'https://github.com/'
 const SELECTOR = '.js-calendar-graph'
 const HIDDEN_SELECTOR = '.position-sticky'
 
-export const captureKusa = async (page: Page): Promise<string | void | Buffer> => {
-    await page.goto(URL)
+export const captureKusa = async (userName: string): Promise<string | void | Buffer> => {
+    const browser = await puppeteer.launch(
+        isDev
+            ? {
+                  args: [],
+                  executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+                  headless: true,
+              }
+            : {
+                  args: chrome.args,
+                  executablePath: await chrome.executablePath,
+                  headless: chrome.headless,
+              },
+    )
+    const page = await browser.newPage()
+    await page.goto(`${BASE_URL}${userName}`)
 
     await page.setViewport({ width: 1980, height: 4000 })
 
