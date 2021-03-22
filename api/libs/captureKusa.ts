@@ -22,7 +22,7 @@ export const captureKusa = async (userName: string): Promise<string | void | Buf
               },
     )
     const page = await browser.newPage()
-    await page.goto(`${BASE_URL}${userName}`)
+    await page.goto(`${BASE_URL}${userName}`, { waitUntil: 'domcontentloaded' })
 
     await page.setViewport({ width: 1980, height: 4000 })
 
