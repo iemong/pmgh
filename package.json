@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@now/build-utils": "^2.7.0",
-        "chrome-aws-lambda": "7.0.0",
+        "chrome-aws-lambda": "9.1.0",
         "puppeteer-core": "7.0.0"
     }
 }
